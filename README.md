@@ -1,54 +1,47 @@
-# Eingebundenen Linux-Lehrgang an der Stätte OST - Ostschweizer Fachhochschule
+# Embedded Linux Seminar an der OST - Digga, das wird krass!
 
-Wilkomen in dem GitHub-Buche für den Sommerlehr an der Hochschule von OST, Buchs SG, der das Kunstwerk der Software, eingebunden unter Linux, lehret.
+Hey Leute, checkt mal das Repo hier für das Summer School Seminar über Embedded Software Development mit Linux an der OST - Ostschweizer Fachhochschule in Buchs SG.
 
-Konflikt2!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+=======
+## Was geht ab hier?
 
-## Überblick
 
-In diesen Zeiten, wo Technik und Wissen regieren, find't man eingebunden Systeme in vielen Künsten wie MedTech, IoT, Mechatronik und mehr. Diese Werkzeuge nehmen Wirklichkeit auf und senden sie, wie gebraucht, und formen die Welt nach den verarbeiteten Daten. Deshalb muss der Meister der Technik die Kunst des Eingebundenen verstehen.
+Alter, überall sind diese vernetzten eingebetteten Systeme, von MedTech, IoT bis zu Elektronik und Photonik. Diese Teile schnappen sich Infos, verarbeiten sie und senden sie weiter. Also, wenn du in der Tech-Welt mithalten willst, musst du den Kram hier checken.
 
-## Lehrgang und Ziel
+## Was du hier lernen wirst:
 
-Dieser Lehrgang suchet, die Schüler zu lehren in der Kunst von Linux und der Software, die eingebunden ist, durch Beispiele, die zum Ziel führen.
+Dieses Seminar hier zeigt dir Linux-basierte eingebettete Softwareentwicklung mit richtig coolen Beispielen.
 
-**Hauptteil des Lernens**:
-- Anfang der Software: Die Grundlage von Kontrolle der Version und des Betriebssystems.
-- Sprachen der Software: Lernen der Sprachen wie C/C++ und Python und ihrer Form in anderen Zielen.
-- Praktische Zeigungen: Die Bücher der verschiedenen Künste.
-- Werkzeuge des Systems: Lehren von Make und CMake.
+**Themen sind**:
+- Basics von Softwareentwicklung, Version Control und Betriebssysteme.
+- Bisschen was zu C/C++ und Python.
+- Praxisbeispiele mit krassen Libraries.
+- Tools wie Make und CMake, die jeder kennen sollte.
 
-**Was Man Lernt**:
-1. Die Kunst von Linux und Shell.
-2. Wissen von Binutils, Meistern und Büchern.
-3. Die Handwerkskunst von Make und CMake.
-4. Die Kunst der Kontrolle der Version, mit Git.
-5. Der Unterschied zwischen dem Eigenen und dem Fremden.
-6. Das Schreiben der Werke in C/C++ und Python.
-7. Die Kunst des Netzes und der Adressen, WLAN und UDP.
-8. Das Wissen der Bootlader, der Kerne und der Bäume der Geräte.
-9. Die Arbeit mit Sensoren als Beispiele.
-10. Anfang der Bilder mit Opencv.
+**Und das ist der Kram, den du danach draufhast**:
+1. Linux und Shell-Basics.
+2. Tools wie Binutils und Compiler.
+3. Wie man Make und CMake benutzt.
+4. Was Git ist und wie es geht.
+5. Unterschied zwischen nativer und Cross-Entwicklung.
+6. Kleine Programme in C/C++ und Python schreiben.
+7. Networking Basics.
+8. Bootloader, Kernel und all den anderen Technik-Kram.
+9. Sensoren, die man kennen sollte.
+10. Bildverarbeitung mit opencv.
 
-## Beginnen
+## Erste Schritte
 
-Machet sicher, dass Ihr diese Werkzeuge und Künste auf Eurem System habt:
-- Linux OS (Bevorzugt: Ubuntu)
-- Git (Für die Kontrolle der Version)
-- GCC und G++ Meister
-- Python 3.x
-- Make und CMake
-- Opencv (Für die Kunst der Bilder)
+Stell sicher, dass du den ganzen nötigen Kram installiert hast: Linux OS (am besten Ubuntu), Git, GCC und G++ Compiler, Python 3.x, Make, CMake und opencv.
 
-## Beitrag
+## Mitmachen?
 
-Eure Beiträge zu diesem Buche sind willkommen! Eure Kunst, sei es die Korrektur der Fehler, die Verbesserung der Schrift oder neue Werke, ist geschätzt. Macht einen Zug und seid sicher, dass Eure Kunst gut erklärt ist.
+Falls du Bock hast, hier was beizutragen – immer her damit! Egal ob du Bugs fixst, die Doku verbesserst oder neue Features vorschlägst – dein Input zählt!
 
 ## Lizenz
 
-Dieses Werk ist frei unter der Lizenz von MIT. Für das Wissen der Lizenz, sehet die LICENSE-Datei in dem Buche.
+Open-Source unter der MIT Lizenz. Mehr Infos findest du in der LICENSE Datei.
 
 ---
 
-Ⓒ 2023 OST - Ostschweizer Fachhochschule, Buchs SG. Alle Rechte behalten.
-
+Hoffe, das trifft den gewünschten Ton!
