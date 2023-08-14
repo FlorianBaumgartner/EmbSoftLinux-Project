@@ -2,7 +2,9 @@
 
 Hey Leute, checkt mal das Repo hier für das Summer School Seminar über Embedded Software Development mit Linux an der OST - Ostschweizer Fachhochschule in Buchs SG.
 
+=======
 ## Was geht ab hier?
+
 
 Alter, überall sind diese vernetzten eingebetteten Systeme, von MedTech, IoT bis zu Elektronik und Photonik. Diese Teile schnappen sich Infos, verarbeiten sie und senden sie weiter. Also, wenn du in der Tech-Welt mithalten willst, musst du den Kram hier checken.
 
