@@ -1,52 +1,52 @@
-# Embedded Linux Seminar at OST - Ostschweizer Fachhochschule
+# Eingebundenen Linux-Lehrgang an der Stätte OST - Ostschweizer Fachhochschule
 
-Welcome to the GitHub repository for the Summer School Seminar on Embedded Software Development under Linux at OST - Ostschweizer Fachhochschule, Buchs SG.
+Wilkomen in dem GitHub-Buche für den Sommerlehr an der Hochschule von OST, Buchs SG, der das Kunstwerk der Software, eingebunden unter Linux, lehret.
 
-## Overview
+## Überblick
 
-In today's technologically-driven landscape, networked embedded systems have found applications in numerous sectors ranging from MedTech, IoT, mechatronics, electronics, data science, to environmental technology and photonics. These systems capture and process physical information, transmitting it as required, and influencing the environment based on the processed data. As such, understanding the intricacies of embedded software development is vital for modern-day engineers. While a myriad of libraries are available for various devices, there's a need for engineers to be adept at sourcing, developing, utilizing, and testing software across different platforms.
+In diesen Zeiten, wo Technik und Wissen regieren, find't man eingebunden Systeme in vielen Künsten wie MedTech, IoT, Mechatronik und mehr. Diese Werkzeuge nehmen Wirklichkeit auf und senden sie, wie gebraucht, und formen die Welt nach den verarbeiteten Daten. Deshalb muss der Meister der Technik die Kunst des Eingebundenen verstehen.
 
-## Course Contents and Objectives
+## Lehrgang und Ziel
 
-This seminar seeks to provide attendees with hands-on experience in Linux-based embedded software development through target-oriented examples.
+Dieser Lehrgang suchet, die Schüler zu lehren in der Kunst von Linux und der Software, die eingebunden ist, durch Beispiele, die zum Ziel führen.
 
-**Key Areas of Focus Include**:
-- Introduction to software development: From the basics of version control systems to fundamental operating system concepts.
-- Software languages: Delving into popular languages like C/C++ and Python, and the nuances of translating them to different target platforms.
-- Practical demonstrations: Showcasing libraries from diverse sectors.
-- System programming tools: Focusing on widely-used tools like Make and CMake.
+**Hauptteil des Lernens**:
+- Anfang der Software: Die Grundlage von Kontrolle der Version und des Betriebssystems.
+- Sprachen der Software: Lernen der Sprachen wie C/C++ und Python und ihrer Form in anderen Zielen.
+- Praktische Zeigungen: Die Bücher der verschiedenen Künste.
+- Werkzeuge des Systems: Lehren von Make und CMake.
 
-**What You Will Learn**:
-1. Basics of Linux and shell programming.
-2. Understanding of Binutils, compilers, and libraries.
-3. Mastery of Make and CMake.
-4. Nuances of version control, with an emphasis on git.
-5. Distinction between native and cross development.
-6. Writing basic programs in C/C++ and Python.
-7. Networking concepts, including static and dynamic IP addresses, WLAN, and UDP.
-8. Grasping the concepts of bootloaders, kernels, device trees, and drivers.
-9. Working with exemplary sensors.
-10. Introduction to image processing using opencv.
+**Was Man Lernt**:
+1. Die Kunst von Linux und Shell.
+2. Wissen von Binutils, Meistern und Büchern.
+3. Die Handwerkskunst von Make und CMake.
+4. Die Kunst der Kontrolle der Version, mit Git.
+5. Der Unterschied zwischen dem Eigenen und dem Fremden.
+6. Das Schreiben der Werke in C/C++ und Python.
+7. Die Kunst des Netzes und der Adressen, WLAN und UDP.
+8. Das Wissen der Bootlader, der Kerne und der Bäume der Geräte.
+9. Die Arbeit mit Sensoren als Beispiele.
+10. Anfang der Bilder mit Opencv.
 
-## Getting Started
+## Beginnen
 
-Ensure that you have the prerequisite tools and software installed on your system:
-
-- Linux OS (Preferred: Ubuntu)
-- Git (For version control)
-- GCC and G++ compilers
+Machet sicher, dass Ihr diese Werkzeuge und Künste auf Eurem System habt:
+- Linux OS (Bevorzugt: Ubuntu)
+- Git (Für die Kontrolle der Version)
+- GCC und G++ Meister
 - Python 3.x
-- Make and CMake
-- opencv (For image processing)
+- Make und CMake
+- Opencv (Für die Kunst der Bilder)
 
-## Contribution
+## Beitrag
 
-Contributions to this repository are always welcome! Whether you're fixing bugs, improving documentation, or proposing new features, your collaboration is appreciated. Make sure to create a pull request and ensure that your code is well-commented.
+Eure Beiträge zu diesem Buche sind willkommen! Eure Kunst, sei es die Korrektur der Fehler, die Verbesserung der Schrift oder neue Werke, ist geschätzt. Macht einen Zug und seid sicher, dass Eure Kunst gut erklärt ist.
 
-## License
+## Lizenz
 
-This project is open-source under the MIT license. For detailed licensing information, please see the LICENSE file in the repository.
+Dieses Werk ist frei unter der Lizenz von MIT. Für das Wissen der Lizenz, sehet die LICENSE-Datei in dem Buche.
 
 ---
 
-Ⓒ 2023 OST - Ostschweizer Fachhochschule, Buchs SG. All rights reserved.
+Ⓒ 2023 OST - Ostschweizer Fachhochschule, Buchs SG. Alle Rechte behalten.
+
