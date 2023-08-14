@@ -2,7 +2,7 @@
 
 Wilkomen in dem GitHub-Buche für den Sommerlehr an der Hochschule von OST, Buchs SG, der das Kunstwerk der Software, eingebunden unter Linux, lehret.
 
-Konflikt!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Konflikt2!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 ## Überblick
 
