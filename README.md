@@ -2,6 +2,8 @@
 
 Wilkomen in dem GitHub-Buche für den Sommerlehr an der Hochschule von OST, Buchs SG, der das Kunstwerk der Software, eingebunden unter Linux, lehret.
 
+Konflikt!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 ## Überblick
 
 In diesen Zeiten, wo Technik und Wissen regieren, find't man eingebunden Systeme in vielen Künsten wie MedTech, IoT, Mechatronik und mehr. Diese Werkzeuge nehmen Wirklichkeit auf und senden sie, wie gebraucht, und formen die Welt nach den verarbeiteten Daten. Deshalb muss der Meister der Technik die Kunst des Eingebundenen verstehen.
