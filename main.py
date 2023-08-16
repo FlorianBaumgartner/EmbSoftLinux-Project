@@ -1,4 +1,4 @@
-from PseudoGpt import PseudoGpt
+from pseudoGpt import PseudoGpt
 from stt4sg import Stt4Sg
 from pathlib import Path
 
