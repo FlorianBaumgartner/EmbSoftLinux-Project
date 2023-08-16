@@ -23,6 +23,7 @@ class PseudoGpt:
         self.driver.find_element(By.CSS_SELECTOR, ".m-0").click()
         self.driver.find_element(By.CSS_SELECTOR, ".m-0").send_keys(prompt)
         self.driver.find_element(By.CSS_SELECTOR, ".mx-1 path").click()
+        time.sleep(1.0)
 
         while True:
             try:

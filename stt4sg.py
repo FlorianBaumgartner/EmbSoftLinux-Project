@@ -1,5 +1,6 @@
 import os
 import json
+import time
 from pathlib import Path
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
@@ -26,6 +27,7 @@ class Stt4Sg:
         self.driver.quit()
 
     def getTranscript(self, file):
+        self._deleteDownloadedFiles()
         self.driver.get("https://stt4sg.fhnw.ch/long")
         self.driver.set_window_size(987, 1068)
 
@@ -41,14 +43,18 @@ class Stt4Sg:
         while True:
             files = os.listdir(self.downloadDir)
             if len(files) > 0 and files[0].endswith(".json"):
+                time.sleep(0.1)
                 with open(self.downloadDir / files[0], encoding="utf-8") as json_file:
                     data = json.load(json_file)
-                for f in files:
-                    os.remove(self.downloadDir / f)
                 break
 
         transcript = data[0]["transcript"]
         return transcript
+    
+    def _deleteDownloadedFiles(self):
+        files = os.listdir(self.downloadDir)
+        for f in files:
+            os.remove(self.downloadDir / f)
 
 
 if __name__ == "__main__":
