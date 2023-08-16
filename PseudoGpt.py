@@ -40,8 +40,8 @@ class PseudoGpt:
 
 
 if __name__ == "__main__":
-    prompt = """Der user will ein lied hören. Konvertiere mir seine Kernaussage als JSON ausdruck im stil von "Artist" und "Title". Falls nur eines der beiden genannt wird, soll das andere feld jeweils leer sein. Folgendes ist seine formulierung: Hallo ich würde gerne ein Lied von Coldplay hören, am meisten gefällt mir Yellow."""
-    # prompt = "Ist Linux besser als Windows?"
+    # prompt = """Der user will ein lied hören. Konvertiere mir seine Kernaussage als JSON ausdruck im stil von "Artist" und "Title". Falls nur eines der beiden genannt wird, soll das andere feld jeweils leer sein. Folgendes ist seine formulierung: Hallo ich würde gerne ein Lied von Coldplay hören, am meisten gefällt mir Yellow."""
+    prompt = "Ist Linux besser als Windows?"
 
     gpt = PseudoGpt()
     answer = gpt.generate(prompt)
