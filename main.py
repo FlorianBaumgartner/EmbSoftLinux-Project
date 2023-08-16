@@ -2,11 +2,8 @@ from pseudoGpt import PseudoGpt
 from stt4sg import Stt4Sg
 from pathlib import Path
 from recorder import Recorder
+from youtube import Youtube
 import json
-import sys
-import os 
-
-sys.stderr = open(os.devnull, 'w')
 
 
 class Main:
@@ -14,6 +11,7 @@ class Main:
         self.recorder = Recorder()
         self.stt4sg = Stt4Sg()
         self.gpt = PseudoGpt()
+        self.youtube = Youtube()
 
 
     def test1(self):
@@ -33,6 +31,15 @@ class Main:
         json_str = answer[answer.find('{'):answer.rfind('}') + 1]
         musicInfo = json.loads(json_str)
         print(musicInfo)
+
+        query = ""
+        if musicInfo["artist"] != "NaN" and type(musicInfo["artist"]) is not float:
+            query += musicInfo["artist"] + " "
+        if musicInfo["title"] != "NaN" and type(musicInfo["title"]) is not float:
+            query += musicInfo["title"]
+        query += " (Audio)"
+        print(f"Play on Youtube: {query}")
+        self.youtube.playMusic(query)
 
 
 if __name__ == "__main__":

@@ -40,6 +40,7 @@ class Stt4Sg:
         json_link.click()
 
         # Wait for the file to be downloaded
+        time.sleep(1.0)
         while True:
             files = os.listdir(self.downloadDir)
             if len(files) > 0 and files[0].endswith(".json"):
