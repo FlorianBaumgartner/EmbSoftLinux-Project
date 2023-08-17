@@ -1,48 +1,63 @@
+# Remove youtube-dl as yt-dlp is newer and works better
+#
+# sudo apt remove youtube-dl
+# pip uninstall youtube-dl
+# python3 -m pip install -U yt-dlp
+# 
+# Create symbolic link: sudo ln -s $(which yt-dlp) /usr/local/bin/youtube-dl
+# Test with: mpv --no-video --ytdl-format=bestaudio https://www.youtube.com/watch?v=z1fadkdxAX0
+
+
 import time
-from googleapiclient.discovery import build
 import subprocess
 from pathlib import Path
+import requests
+import urllib.parse
+
+from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+
 
 class Youtube:
-    def __init__(self, apiKeyPath = Path(__file__).parent / "api_key.secret"):
-        self.retryCount = 20
-        with open(apiKeyPath, 'r') as f:
-            self.API_KEY = f.read()
+    def __init__(self):
+        self.processHandle = None
+        chrome_options = webdriver.ChromeOptions()
+        # chrome_options.headless = True          # run browser in headless mode
+        self.driver = webdriver.Chrome(options=chrome_options)
+
+    def __del__(self):
+        self.driver.quit()
         
     def playMusic(self, search_query):
-        video_url = self.get_video_url(self.API_KEY, search_query)
+        video_url = self.get_video_url_music(search_query)
         print(f"Playing {video_url}")
-        for i in range(self.retryCount):
-            try:
-                ret = self.play_audio(video_url)
-                if(ret.returncode != 0):
-                    print("Could not start playing audio -> retrying")
-                    raise Exception("mpv returned non-zero exit code")
-                break
-            except:
-                time.sleep(0.5)
+        self.play_audio(video_url)
 
-    def get_video_url(self, api_key, search_query):
-        # Build the YouTube API client
-        youtube = build('youtube', 'v3', developerKey=api_key)
+    def stopMusic(self):
+        if self.processHandle:
+            self.processHandle.terminate()
+            self.processHandle = None
 
-        # Search for videos matching the query
-        search_response = youtube.search().list(
-            q=search_query,
-            part='id,snippet',
-            maxResults=3
-        ).execute()
+    def get_video_url(self, query):
+        base_url = "https://www.youtube.com/results"
+        query_param = urllib.parse.quote_plus(query)
+        url = f"{base_url}?search_query={query_param}&sp=EgIQAQ%253D%253D"
+        page = str(requests.get(url).content)
+        return "https://www.youtube.com/" + page[page.find("/watch?"):].split('\\')[0]
+    
+    def get_video_url_music(self, query):
+        base_url = "https://music.youtube.com/search"
+        query_param = urllib.parse.quote_plus(query)
+        url = f"{base_url}?q={query_param}"
 
-        # Extract video ID from the first result
-        for i in range(len(search_response['items'])):
-            try:
-                video_id = search_response['items'][i]['id']['videoId']
-                break
-            except:
-                pass
+        self.driver.get(url)
 
-        video_url = f"https://www.youtube.com/watch?v={video_id}"
-        return video_url
+        # page = str(requests.get(url).content)
+        pass
+        return "https://www.youtube.com/" + page[page.find("watch?"):].split('\\')[0]
+
 
     def play_audio(self, video_url):
         # Use youtube-dl to get the audio stream URL and play it with mpv
@@ -52,10 +67,11 @@ class Youtube:
             '--ytdl-format=bestaudio',
             video_url
         ]
-        ret = subprocess.run(command)
-        return ret
+        self.processHandle = subprocess.Popen(command)
 
 
 if __name__ == "__main__":
     youtube = Youtube()
-    youtube.playMusic("Michael Jackson (Audio)")
+    youtube.playMusic("David Guetta Blue")
+    time.sleep(20)
+    youtube.stopMusic()
