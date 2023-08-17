@@ -20,7 +20,7 @@ class Youtube:
         self.processHandle = None
         
     def playMusic(self, search_query):
-        video_url = self.get_video_url_music(search_query)
+        video_url = self.get_video_url(search_query)        # TODO: Use get_video_url_music instead
         print(f"Playing {video_url}")
         self.play_audio(video_url)
 
@@ -37,12 +37,22 @@ class Youtube:
         return "https://www.youtube.com/" + page[page.find("/watch?"):].split('\\')[0]
     
     def get_video_url_music(self, query):
+        retryCount = 50
         base_url = "https://www.bing.com/search"
         query = f"{query} site:music.youtube.com"
         query_param = urllib.parse.quote_plus(query)
         url = f"{base_url}?q={query_param}"
-        page = str(requests.get(url).content)
-        return "https://www.youtube.com" + page[page.find("/watch?"):].split('"')[0]
+        print(f"Query URL: {url}")
+        while True:
+            page = str(requests.get(url).content)
+            if(page.find("/watch?")) != -1: 
+                return "https://www.youtube.com" + page[page.find("/watch?"):].split('"')[0]
+            else:
+                print(f"Could not find video URL. Retrying {retryCount} times")
+                retryCount -= 1
+                time.sleep(0.1)
+            if retryCount == 0:
+                raise Exception("Could not find video URL")
 
     def play_audio(self, video_url):
         command = [
@@ -56,6 +66,6 @@ class Youtube:
 
 if __name__ == "__main__":
     youtube = Youtube()
-    youtube.playMusic("David Guetta Blue")
-    time.sleep(20)
+    youtube.playMusic("Beatles Yester day")
+    input("\n\nPress enter to stop playing")
     youtube.stopMusic()
