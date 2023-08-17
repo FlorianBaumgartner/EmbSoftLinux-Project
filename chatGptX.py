@@ -18,12 +18,12 @@ class ChatGptX:
         self.driver.quit()
     
     def generate(self, prompt):
-        regenerating = 5
+        regenerating = 10
         for i in range(regenerating):
             self.driver.get("https://chatgptx.de/")
             self.driver.set_window_size(1200, 1072)
             self.driver.find_element(By.ID, "prompt").click()
-            self.driver.find_element(By.ID, "prompt").send_keys("Der user will ein lied hören. Konvertiere mir seine Kernaussage als JSON ausdruck im stil von \"Artist\" und \"Title\". Falls nur eines der beiden genannt wird, soll das andere feld jeweils leer sein. Folgendes ist seine formulierung: Hallo ich würde gerne ein Lied von Coldplay hören, am meisten gefällt mir Yellow.")
+            self.driver.find_element(By.ID, "prompt").send_keys(prompt)
             self.driver.find_element(By.ID, "sendchat_btn").click()
 
             timeout = 100

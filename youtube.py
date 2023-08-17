@@ -30,13 +30,18 @@ class Youtube:
         search_response = youtube.search().list(
             q=search_query,
             part='id,snippet',
-            maxResults=1
+            maxResults=3
         ).execute()
 
         # Extract video ID from the first result
-        video_id = search_response['items'][0]['id']['videoId']
-        video_url = f"https://www.youtube.com/watch?v={video_id}"
+        for i in range(len(search_response['items'])):
+            try:
+                video_id = search_response['items'][i]['id']['videoId']
+                break
+            except:
+                pass
 
+        video_url = f"https://www.youtube.com/watch?v={video_id}"
         return video_url
 
     def play_audio(self, video_url):
@@ -53,4 +58,4 @@ class Youtube:
 
 if __name__ == "__main__":
     youtube = Youtube()
-    youtube.playMusic("Coldplay Yellow")
+    youtube.playMusic("Michael Jackson (Audio)")
