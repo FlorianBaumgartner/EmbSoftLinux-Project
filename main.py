@@ -1,4 +1,5 @@
 from pseudoGpt import PseudoGpt
+from chatGptX import ChatGptX
 from stt4sg import Stt4Sg
 from pathlib import Path
 from recorder import Recorder
@@ -10,7 +11,8 @@ class Main:
     def __init__(self):
         self.recorder = Recorder()
         self.stt4sg = Stt4Sg()
-        self.gpt = PseudoGpt()
+        # self.gpt = PseudoGpt()
+        self.gpt = ChatGptX()
         self.youtube = Youtube()
 
 
