@@ -24,7 +24,7 @@ class Youtube:
     def __init__(self):
         self.processHandle = None
         chrome_options = webdriver.ChromeOptions()
-        # chrome_options.headless = True          # run browser in headless mode
+        chrome_options.headless = True          # run browser in headless mode
         self.driver = webdriver.Chrome(options=chrome_options)
 
     def __del__(self):
@@ -60,7 +60,6 @@ class Youtube:
 
 
     def play_audio(self, video_url):
-        # Use youtube-dl to get the audio stream URL and play it with mpv
         command = [
             'mpv',
             '--no-video',

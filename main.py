@@ -39,7 +39,6 @@ class Main:
             query += musicInfo["artist"] + " "
         if musicInfo["title"] != "NaN" and type(musicInfo["title"]) is not float:
             query += musicInfo["title"] + " "
-        query += "(Audio)"
         print(f"Play on Youtube: {query}")
         self.youtube.playMusic(query)
 
