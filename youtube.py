@@ -14,21 +14,10 @@ from pathlib import Path
 import requests
 import urllib.parse
 
-from selenium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
-
 
 class Youtube:
     def __init__(self):
         self.processHandle = None
-        chrome_options = webdriver.ChromeOptions()
-        chrome_options.headless = True          # run browser in headless mode
-        self.driver = webdriver.Chrome(options=chrome_options)
-
-    def __del__(self):
-        self.driver.quit()
         
     def playMusic(self, search_query):
         video_url = self.get_video_url_music(search_query)
@@ -48,16 +37,12 @@ class Youtube:
         return "https://www.youtube.com/" + page[page.find("/watch?"):].split('\\')[0]
     
     def get_video_url_music(self, query):
-        base_url = "https://music.youtube.com/search"
+        base_url = "https://www.bing.com/search"
+        query = f"{query} site:music.youtube.com"
         query_param = urllib.parse.quote_plus(query)
         url = f"{base_url}?q={query_param}"
-
-        self.driver.get(url)
-        self.driver.find_element(By.CSS_SELECTOR, "#yDmH0d > c-wiz > div > div > div > div.NIoIEf > div.G4njw > div.qqtRac > div.VtwTSb > form:nth-child(3) > div > div > button").click()
-        time.sleep(2.5)     # TODO: Make better; wait untl the page is loaded
-        page = self.driver.page_source
-        return "https://www.youtube.com/" + page[page.find("watch?"):].split('"')[0]
-
+        page = str(requests.get(url).content)
+        return "https://www.youtube.com" + page[page.find("/watch?"):].split('"')[0]
 
     def play_audio(self, video_url):
         command = [
