@@ -43,6 +43,9 @@ class Main:
         print(f"Play on Youtube: {query}")
         self.youtube.playMusic(query)
 
+        input("\n\nPress enter to stop playing")
+        self.youtube.stopMusic()
+
 
 if __name__ == "__main__":
     main = Main()
