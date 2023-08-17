@@ -25,12 +25,16 @@ class PseudoGpt:
         self.driver.find_element(By.CSS_SELECTOR, ".mx-1 path").click()
         time.sleep(1.0)
 
+        timeout = 100
         while True:
             try:
                 state = self.driver.find_element(By.CSS_SELECTOR, ".py-1").text       # Return at start "NEW" and then "Stop generating"
             except Exception as e:
                 break
             time.sleep(0.1)
+            timeout -= 1
+            if timeout == 0:
+                raise Exception("Timeout")
 
         answer = ""
         soup = BeautifulSoup(self.driver.page_source, 'lxml')
