@@ -53,10 +53,10 @@ class Youtube:
         url = f"{base_url}?q={query_param}"
 
         self.driver.get(url)
-
-        # page = str(requests.get(url).content)
-        pass
-        return "https://www.youtube.com/" + page[page.find("watch?"):].split('\\')[0]
+        self.driver.find_element(By.CSS_SELECTOR, "#yDmH0d > c-wiz > div > div > div > div.NIoIEf > div.G4njw > div.qqtRac > div.VtwTSb > form:nth-child(3) > div > div > button").click()
+        time.sleep(2.5)     # TODO: Make better; wait untl the page is loaded
+        page = self.driver.page_source
+        return "https://www.youtube.com/" + page[page.find("watch?"):].split('"')[0]
 
 
     def play_audio(self, video_url):
