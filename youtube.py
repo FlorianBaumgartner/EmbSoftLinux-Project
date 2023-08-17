@@ -1,3 +1,12 @@
+# Remove youtube-dl as yt-dlp is newer and works better
+#
+# sudo apt remove youtube-dl
+# pip uninstall youtube-dl
+# python3 -m pip install -U yt-dlp
+# 
+# Create symbolic link: sudo ln -s $(which yt-dlp) /usr/local/bin/youtube-dl
+# Test with: mpv --no-video --ytdl-format=bestaudio https://www.youtube.com/watch?v=z1fadkdxAX0
+
 import time
 from googleapiclient.discovery import build
 import subprocess
