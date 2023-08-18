@@ -1,5 +1,4 @@
 import board            # https://learn.adafruit.com/monochrome-oled-breakouts/python-setup
-import digitalio
 from PIL import Image, ImageDraw, ImageFont, ImageOps, ImageSequence
 import adafruit_ssd1306
 import time
