@@ -15,7 +15,7 @@ Swiss Alexa is a voice-activated music player that understands commands in Swiss
 - **Bluetooth Speaker**
 
 ## Features
-1. **Swiss German Voice Recognition**: Speak in Swiss German, and Swiss Alexa will understand you using the fHNW API.
+1. **Swiss German Voice Recognition**: Speak in Swiss German, and Swiss Alexa will understand you using the FHNW API.
 2. **Feature Extraction with Chatbots**: Harnessing the power of [Huggingface](https://huggingface.co/chat) and [ChatGptX](https://chatgptx.de/) for text processing.
 3. **Music Streaming**: The system finds music tracks on YouTube Music via Yahoo and streams them.
 4. **Interactive OLED Display**: Get visual feedback and song details on the OLED display.
@@ -31,7 +31,7 @@ Swiss Alexa is a voice-activated music player that understands commands in Swiss
 6. To stop playback, press the joystick button again.
 
 ## Software Stack
-- **Voice Recognition**: The API from Fachhochschule Nordwestschweiz (fHNW) transcribes Swiss German voice commands to German. [API Link](https://stt4sg.fhnw.ch/)
+- **Voice Recognition**: The API from Fachhochschule Nordwestschweiz (FHNW) transcribes Swiss German voice commands to German. [API Link](https://stt4sg.fhnw.ch/)
 - **Feature Extraction**: A web scraper extracts data using both [Huggingface](https://huggingface.co/chat) and [ChatGptX](https://chatgptx.de/).
 - **Music Search**: The system uses Yahoo filtered for `site:music.youtube.com` to search for music, and then processes the URL with `yt-dlp`.
 - **Audio Playback**: Using the `mpv` media player on Linux to stream only the audio from YouTube Music tracks.
