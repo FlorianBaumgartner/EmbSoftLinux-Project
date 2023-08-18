@@ -77,6 +77,28 @@ Alright, here's an enhanced section of instructions for setting up `yt-dlp`, `py
    ```
 
 
+## Installing Chromium Drivers
+
+The `chromedriver` is a separate component that Selenium requires to interface with the Chromium browser.
+
+1. **Install Chromium Browser**:
+   If you don't have Chromium browser installed, install it first.
+   ```bash
+   sudo apt-get install chromium-browser
+   ```
+
+2. **Install Chromedriver**:
+   ```bash
+   sudo apt-get install chromium-chromedriver
+   ```
+
+3. **Add Chromedriver to PATH (if necessary)**:
+   After installing, you may need to ensure that `chromedriver` is in your system's PATH so that Selenium can find it. Here's a command to symlink it to a common location in the PATH:
+   ```bash
+   sudo ln -s /usr/lib/chromium-browser/chromedriver /usr/bin/chromedriver
+   ```
+
+
 ## Software Stack
 - **Voice Recognition**: The API from Fachhochschule Nordwestschweiz (FHNW) transcribes Swiss German voice commands to German. [API Link](https://stt4sg.fhnw.ch/)
 - **Feature Extraction**: A web scraper extracts data using both [Huggingface](https://huggingface.co/chat) and [ChatGptX](https://chatgptx.de/).
