@@ -1,10 +1,10 @@
 # Swiss Alexa: Embedded Linux Project at OST
 
-Welcome to the GitHub repository of the "Swiss Alexa" project. This project was a collaboration effort during the Embedded Linux Seminar at Fachhochschule Ostschweiz (OST) in Buchs.
+Welcome to the GitHub repository of the "Swiss Alexa" project. This project was a collaboration effort during the Embedded Linux Seminar at Ostschweizer Fachhochschule (OST) in Buchs SG.
 
 ## Overview
 
-Swiss Alexa is a voice-activated music player that understands commands in Swiss German. Once you make a song request in Swiss German, Swiss Alexa will transcribe your request to German, search for the song on YouTube, and stream the audio through a Bluetooth speaker.
+Swiss Alexa is a voice-controlled music player that understands Swiss German. Once you make a song request in Swiss German, Swiss Alexa will transcribe your request to German, search for the song on YouTube Music, and stream the audio through a Bluetooth speaker.
 
 ## Hardware Setup
 - **Raspberry Pi 4**
@@ -17,7 +17,7 @@ Swiss Alexa is a voice-activated music player that understands commands in Swiss
 ## Features
 1. **Swiss German Voice Recognition**: Speak in Swiss German, and Swiss Alexa will understand you using the FHNW API.
 2. **Feature Extraction with Chatbots**: Harnessing the power of [Huggingface](https://huggingface.co/chat) and [ChatGptX](https://chatgptx.de/) for text processing.
-3. **Music Streaming**: The system finds music tracks on YouTube Music via Yahoo and streams them.
+3. **Music Streaming**: The system finds music tracks on YouTube Music via a Yahoo websearch and streams them.
 4. **Interactive OLED Display**: Get visual feedback and song details on the OLED display.
 5. **LED Feedback**: LEDs provide feedback about the status (searching, playing, etc.).
 6. **Simple Controls**: Control playback with a single press of the joystick button.
@@ -43,7 +43,7 @@ Swiss Alexa is a voice-activated music player that understands commands in Swiss
 
 
 ## Acknowledgements
-We'd like to thank the Fachhochschule Ostschweiz (OST) and all the professors and participants of the Embedded Linux Seminar for their continuous support. Special thanks to Fachhochschule Nordwestschweiz (FHNW) for providing the Swiss German transcription API.
+We'd like to thank the Ostschweizer Fachhochschule (OST) and all the professors and participants of the Embedded Linux Seminar for their continuous support. Special thanks to Fachhochschule Nordwestschweiz (FHNW) for providing the Swiss German transcription API.
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
