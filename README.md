@@ -1,47 +1,54 @@
-# Embedded Linux Seminar an der OST - Digga, das wird krass!
+# Swiss Alexa: Embedded Linux Project at OST
 
-Hey Leute, checkt mal das Repo hier für das Summer School Seminar über Embedded Software Development mit Linux an der OST - Ostschweizer Fachhochschule in Buchs SG.
+Welcome to the GitHub repository of the "Swiss Alexa" project. This project was a collaboration effort during the Embedded Linux Seminar at Fachhochschule Ostschweiz (OST) in Buchs.
 
-=======
-## Was geht ab hier?
+## Overview
+
+Swiss Alexa is a voice-activated music player that understands commands in Swiss German. Once you make a song request in Swiss German, Swiss Alexa will transcribe your request to German, search for the song on YouTube, and stream the audio through a Bluetooth speaker.
+
+## Hardware Setup
+- **Raspberry Pi 4**
+- **USB Microphone**
+- **128x64 Monochrome OLED Display**
+- **Joystick Button**
+- **3 LEDs (Red, Green, Blue)**
+- **Bluetooth Speaker**
+
+## Features
+1. **Swiss German Voice Recognition**: Speak in Swiss German, and Swiss Alexa will understand you using the fHNW API.
+2. **Feature Extraction with Chatbots**: Harnessing the power of [Huggingface](https://huggingface.co/chat) and [ChatGptX](https://chatgptx.de/) for text processing.
+3. **Music Streaming**: The system finds music tracks on YouTube Music via Yahoo and streams them.
+4. **Interactive OLED Display**: Get visual feedback and song details on the OLED display.
+5. **LED Feedback**: LEDs provide feedback about the status (searching, playing, etc.).
+6. **Simple Controls**: Control playback with a single press of the joystick button.
+
+## How to Use
+1. Ensure that all the hardware components are correctly connected.
+2. Power on the Raspberry Pi 4.
+3. Press the joystick button.
+4. Make a song request in Swiss German (either by artist name, song title, or both).
+5. The system will search and play the song via the Bluetooth speaker.
+6. To stop playback, press the joystick button again.
+
+## Software Stack
+- **Voice Recognition**: The API from Fachhochschule Nordwestschweiz (fHNW) transcribes Swiss German voice commands to German. [API Link](https://stt4sg.fhnw.ch/)
+- **Feature Extraction**: A web scraper extracts data using both [Huggingface](https://huggingface.co/chat) and [ChatGptX](https://chatgptx.de/).
+- **Music Search**: The system uses Yahoo filtered for `site:music.youtube.com` to search for music, and then processes the URL with `yt-dlp`.
+- **Audio Playback**: Using the `mpv` media player on Linux to stream only the audio from YouTube Music tracks.
 
 
-Alter, überall sind diese vernetzten eingebetteten Systeme, von MedTech, IoT bis zu Elektronik und Photonik. Diese Teile schnappen sich Infos, verarbeiten sie und senden sie weiter. Also, wenn du in der Tech-Welt mithalten willst, musst du den Kram hier checken.
+## Contributors
+- [Florian Baumgartner](https://github.com/FlorianBaumgartner)
+- [Matthias Höfflin](https://github.com/Matthias-Hoefflin)
 
-## Was du hier lernen wirst:
 
-Dieses Seminar hier zeigt dir Linux-basierte eingebettete Softwareentwicklung mit richtig coolen Beispielen.
+## Acknowledgements
+We'd like to thank the Fachhochschule Ostschweiz (OST) and all the professors and participants of the Embedded Linux Seminar for their continuous support. Special thanks to Fachhochschule Nordwestschweiz (FHNW) for providing the Swiss German transcription API.
 
-**Themen sind**:
-- Basics von Softwareentwicklung, Version Control und Betriebssysteme.
-- Bisschen was zu C/C++ und Python.
-- Praxisbeispiele mit krassen Libraries.
-- Tools wie Make und CMake, die jeder kennen sollte.
-
-**Und das ist der Kram, den du danach draufhast**:
-1. Linux und Shell-Basics.
-2. Tools wie Binutils und Compiler.
-3. Wie man Make und CMake benutzt.
-4. Was Git ist und wie es geht.
-5. Unterschied zwischen nativer und Cross-Entwicklung.
-6. Kleine Programme in C/C++ und Python schreiben.
-7. Networking Basics.
-8. Bootloader, Kernel und all den anderen Technik-Kram.
-9. Sensoren, die man kennen sollte.
-10. Bildverarbeitung mit opencv.
-
-## Erste Schritte
-
-Stell sicher, dass du den ganzen nötigen Kram installiert hast: Linux OS (am besten Ubuntu), Git, GCC und G++ Compiler, Python 3.x, Make, CMake und opencv.
-
-## Mitmachen?
-
-Falls du Bock hast, hier was beizutragen – immer her damit! Egal ob du Bugs fixst, die Doku verbesserst oder neue Features vorschlägst – dein Input zählt!
-
-## Lizenz
-
-Open-Source unter der MIT Lizenz. Mehr Infos findest du in der LICENSE Datei.
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
-Hoffe, das trifft den gewünschten Ton!
+
+Happy Listening with Swiss Alexa! 🎵🇨🇭
