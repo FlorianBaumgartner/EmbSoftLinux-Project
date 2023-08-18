@@ -1,7 +1,5 @@
 # Adafruit OLED and GPIO
 adafruit-ssd1306
-board
-digitalio
 
 # Image Processing
 Pillow
