@@ -5,6 +5,7 @@ from pathlib import Path
 from recorder import Recorder
 from youtube import Youtube
 from display import Display, State
+from gpio import Gpio
 import threading
 import json
 
@@ -17,50 +18,73 @@ class Main:
         self.chatGpt = ChatGptX()
         self.youtube = Youtube()
         self.display = Display()
+        self.gpio = Gpio()
 
         self.state = State.READY
-        self.display.displayStateReady()
+        self.display.setState(State.READY)
+        self.filePath = None
+        self.playingTitle = ""
 
+    def __del__(self):
+        self.display.stop()
 
     def run(self):
-
+        self.display.start()
         while True:
             if self.state == State.READY:
-                pass
+                if self.gpio.getButtonCenter():
+                    self.state = State.RECORDING
+                    self.display.setState(State.RECORDING)
+                    
+                    self.filePath = Path(__file__).parent / "recording.mp3"
 
+                    self.recorder.startRecording(self.filePath)
+            elif self.state == State.RECORDING:
+                if not self.gpio.getButtonCenter():
+                    self.state = State.PROCESSING
+                    self.display.setState(State.PROCESSING)
 
+                    self.recorder.stopRecording()
+                    print("Done recording")
+                    self.filePath = Path(__file__).parent / "recording.mp3"
 
+            elif self.state == State.PROCESSING:
+                self.display.setProcessingStatus("Transcribing audio...")
+                transcript = self.stt4sg.getTranscript(self.filePath)
+                print(f"Transcript: {transcript}")
 
-        file = Path(__file__).parent / "recording.mp3"
-        self.recorder.startRecording(file)
-        input("\n\nPress enter to stop recording")
-        self.recorder.stopRecording()
-        print("Done recording")
+                self.display.setProcessingStatus("Chatting with GPT...")
+                prompt = """Der Benutzer will ein Lied hören. Konvertiere seine Kernaussage als JSON-Ausdruck {"artist": str, "title": str}. Verwende das Wort "NaN" falls etwas nicht genannt wurde. Folgendes ist die Formulierung: """
+                answer = self.getGptAnswer(prompt + transcript)
+                print(f"PseudoGpt: {answer}")
 
-        transcript = self.stt4sg.getTranscript(file)
-        print(f"Transcript: {transcript}")
+                self.display.setProcessingStatus("Searching on YouTube...")
+                json_str = answer[answer.find('{'):answer.rfind('}') + 1]
+                musicInfo = json.loads(json_str)
+                print(musicInfo)
 
-        prompt = """Der Benutzer will ein Lied hören. Konvertiere seine Kernaussage als JSON-Ausdruck {"artist": str, "title": str}. Verwende das Wort "NaN" falls etwas nicht genannt wurde. Folgendes ist die Formulierung: """
-        
-        
-        answer = self.getGptAnswer(prompt + transcript)
-        print(f"PseudoGpt: {answer}")
+                query = ""
+                if musicInfo["artist"] != "NaN" and type(musicInfo["artist"]) is not float:
+                    query += musicInfo["artist"] + " "
+                if musicInfo["title"] != "NaN" and type(musicInfo["title"]) is not float:
+                    query += musicInfo["title"] + " "
+                print(f"Play on Youtube: {query}")
+                self.playingTitle = self.youtube.playMusic(query, True)
+                if self.playingTitle == "":
+                    self.playingTitle = self.youtube.playMusic(query, False)
+                print(f"Playing: {self.playingTitle}")
+                self.state = State.PLAYING
+                self.display.setPlayingTitle(self.playingTitle)
+                self.display.setState(State.PLAYING)
 
-        json_str = answer[answer.find('{'):answer.rfind('}') + 1]
-        musicInfo = json.loads(json_str)
-        print(musicInfo)
+            elif self.state == State.PLAYING:
+                if self.gpio.getButtonCenter():
+                    self.state = State.READY
+                    self.display.setState(State.READY)
 
-        query = ""
-        if musicInfo["artist"] != "NaN" and type(musicInfo["artist"]) is not float:
-            query += musicInfo["artist"] + " "
-        if musicInfo["title"] != "NaN" and type(musicInfo["title"]) is not float:
-            query += musicInfo["title"] + " "
-        print(f"Play on Youtube: {query}")
-        title = self.youtube.playMusic(query)
-        print(f"Playing: {title}")
+                    self.youtube.stopMusic()
+                    print("Done playing")
 
-        input("\n\nPress enter to stop playing")
-        self.youtube.stopMusic()
 
     def getGptAnswer(self, prompt):
         result = {}

@@ -60,5 +60,5 @@ class Stt4Sg:
 
 if __name__ == "__main__":
     stt4sg = Stt4Sg()
-    transcript = stt4sg.getTranscript(Path(__file__).parent / "test.mp3")
+    transcript = stt4sg.getTranscript(Path(__file__).parent / "recording.mp3")
     print(transcript)

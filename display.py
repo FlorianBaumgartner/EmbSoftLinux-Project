@@ -19,7 +19,7 @@ class State(Enum):
 class Display:
     def __init__(self):
         i2c = board.I2C()
-        self.oled = adafruit_ssd1306.SSD1306_I2C(128, 64, i2c, addr=0x3C, reset=digitalio.DigitalInOut(board.D4))
+        self.oled = adafruit_ssd1306.SSD1306_I2C(128, 64, i2c, addr=0x3C, reset=None)#digitalio.DigitalInOut(board.D4))
         self.running = False
         self.terminated = False
         self.thread = None
