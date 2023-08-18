@@ -26,6 +26,9 @@ class Main:
         self.display.setState(State.READY)
         self.filePath = None
         self.playingTitle = ""
+        self.transcript = None
+
+        self.demoTransscript = "Ich möchte gerne ein Lied von Meduza hören, und zwar Lose Control"
 
     def __del__(self):
         self.display.stop()
@@ -48,6 +51,13 @@ class Main:
                         
                         self.filePath = Path(__file__).parent / "recording.mp3"
                         self.recorder.startRecording(self.filePath)
+                    if self.gpio.getButtonLeft():
+                        self.filePath = None
+                        self.transcript = self.demoTransscript
+                        self.gpio.setLedGreen(False)
+                        self.state = State.RECORDING
+                        self.display.setState(State.RECORDING)
+
                 elif self.state == State.RECORDING:
                     self.gpio.setLedRed(time.time() % 1.0 > 0.5)
                     if not self.button and self.buttonOld:
@@ -62,12 +72,13 @@ class Main:
                 elif self.state == State.PROCESSING:
                     self.gpio.setBlinking(True)
                     self.display.setProcessingStatus("Transcribing audio...")
-                    transcript = self.stt4sg.getTranscript(self.filePath)
-                    print(f"Transcript: {transcript}")
+                    if self.filePath:
+                        self.transcript = self.stt4sg.getTranscript(self.filePath)
+                    print(f"Transcript: {self.transcript}")
 
                     self.display.setProcessingStatus("Chatting with GPT...")
                     prompt = """Der Benutzer will ein Lied hören. Konvertiere seine Kernaussage als JSON-Ausdruck {"artist": str, "title": str}. Verwende das Wort "NaN" falls etwas nicht genannt wurde. Folgendes ist die Formulierung: """
-                    answer = self.getGptAnswer(prompt + transcript)
+                    answer = self.getGptAnswer(prompt + self.transcript)
                     print(f"PseudoGpt: {answer}")
 
                     self.display.setProcessingStatus("Searching on YouTube...")

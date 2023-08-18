@@ -19,7 +19,7 @@ class Stt4Sg:
             "plugins.always_open_pdf_externally": True
         })
 
-        chrome_options.headless = True          # run browser in headless mode
+        # chrome_options.headless = True          # run browser in headless mode
         self.driver = webdriver.Chrome(options=chrome_options)
         self.wait = WebDriverWait(self.driver, 300)
 
