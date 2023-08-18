@@ -4,6 +4,7 @@ from stt4sg import Stt4Sg
 from pathlib import Path
 from recorder import Recorder
 from youtube import Youtube
+from display import Display, State
 import threading
 import json
 
@@ -15,9 +16,21 @@ class Main:
         self.pseudoGpt = PseudoGpt()
         self.chatGpt = ChatGptX()
         self.youtube = Youtube()
+        self.display = Display()
+
+        self.state = State.READY
+        self.display.displayStateReady()
 
 
     def run(self):
+
+        while True:
+            if self.state == State.READY:
+                pass
+
+
+
+
         file = Path(__file__).parent / "recording.mp3"
         self.recorder.startRecording(file)
         input("\n\nPress enter to stop recording")
@@ -43,7 +56,8 @@ class Main:
         if musicInfo["title"] != "NaN" and type(musicInfo["title"]) is not float:
             query += musicInfo["title"] + " "
         print(f"Play on Youtube: {query}")
-        self.youtube.playMusic(query)
+        title = self.youtube.playMusic(query)
+        print(f"Playing: {title}")
 
         input("\n\nPress enter to stop playing")
         self.youtube.stopMusic()

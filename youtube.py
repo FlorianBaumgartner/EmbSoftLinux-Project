@@ -13,16 +13,48 @@ import subprocess
 from pathlib import Path
 import requests
 import urllib.parse
+import html
 
 
 class Youtube:
-    def __init__(self):
+    def _init_(self):
         self.processHandle = None
         
-    def playMusic(self, search_query):
-        video_url = self.get_video_url(search_query)        # TODO: Use get_video_url_music instead
-        print(f"Playing {video_url}")
-        self.play_audio(video_url)
+    def playMusic(self, search_query, url_type_music=True): 
+        #Youtube Music
+        if(url_type_music == True):
+            video_url = self.get_video_url_music(search_query)
+            if(video_url == ""):
+                return ""
+            else:
+                print(f"Playing {video_url}")
+                self.play_audio(video_url)
+                title = self.getTitle(video_url)
+                return title
+        #Youtube Video
+        else:
+            video_url=self.get_video_url(search_query)
+            print(f"Playing {video_url}")
+            self.play_audio(video_url)
+            title = self.getTitle(video_url)
+            return title
+        
+    def getTitle(self, url):
+        page_bytes = requests.get(url).content
+
+        page = page_bytes.decode("utf-8")
+        # Find the start and end indexes of the title tag
+        title_start = page.find("<title>") + len("<title>")
+        title_end = page.find("</title>", title_start)
+
+        if title_start != -1 and title_end != -1:
+            # Extract the text between the title tags
+            video_title = page[title_start:title_end]
+            # print("Title = " + html.unescape(video_title))
+            return html.unescape(video_title)
+        else:
+            print("Video title not found.")
+            return ""
 
     def stopMusic(self):
         if self.processHandle:
@@ -38,7 +70,7 @@ class Youtube:
     
     def get_video_url_music(self, query):
         retryCount = 50
-        base_url = "https://www.bing.com/search"
+        base_url = "https://search.yahoo.com/search"
         query = f"{query} site:music.youtube.com"
         query_param = urllib.parse.quote_plus(query)
         url = f"{base_url}?q={query_param}"
@@ -52,7 +84,7 @@ class Youtube:
                 retryCount -= 1
                 time.sleep(0.1)
             if retryCount == 0:
-                raise Exception("Could not find video URL")
+                return ""
 
     def play_audio(self, video_url):
         command = [
@@ -66,6 +98,7 @@ class Youtube:
 
 if __name__ == "__main__":
     youtube = Youtube()
-    youtube.playMusic("Beatles Yester day")
+    title = youtube.playMusic("One Republic",True)
+    print(f"Title: {title}")
     input("\n\nPress enter to stop playing")
     youtube.stopMusic()
