@@ -51,7 +51,11 @@ class Youtube:
             # Extract the text between the title tags
             video_title = page[title_start:title_end]
             # print("Title = " + html.unescape(video_title))
-            return html.unescape(video_title)
+
+            title = html.unescape(video_title)
+            if(title.strip().endswith("- YouTube")):
+                title = title.strip()[:-10]
+            return title
         else:
             print("Video title not found.")
             return ""
@@ -60,6 +64,13 @@ class Youtube:
         if self.processHandle:
             self.processHandle.terminate()
             self.processHandle = None
+
+    def getPlayStatus(self):
+        if self.processHandle:
+            ret = self.processHandle.poll()
+            return ret is None
+        else:
+            return False
 
     def get_video_url(self, query):
         base_url = "https://www.youtube.com/results"
@@ -98,7 +109,15 @@ class Youtube:
 
 if __name__ == "__main__":
     youtube = Youtube()
-    title = youtube.playMusic("One Republic",True)
+    # title = youtube.playMusic("Funniest 5 Second Video Ever!", False)
+    title = youtube.playMusic("Meduza Lose Control", True)
     print(f"Title: {title}")
+    # while True:
+    #     playState = youtube.getPlayStatus()
+    #     print(f"Play State: {playState}")
+    #     if playState == 0:
+    #         break
+    #     time.sleep(0.1)
+
     input("\n\nPress enter to stop playing")
     youtube.stopMusic()

@@ -1,4 +1,5 @@
 import RPi.GPIO as GPIO
+import threading
 import time
 
 LED_RED = 16
@@ -26,8 +27,31 @@ class Gpio:
         GPIO.setup(LED_GREEN, GPIO.OUT)
         GPIO.setup(LED_BLUE, GPIO.OUT)
 
+        self.thread = None
+        self.running = False
+        self.blinkState = False
+
     def __del__(self):
         GPIO.cleanup()
+
+    def start(self):
+        self.running = True
+        self.thread = threading.Thread(target=self._run)
+        self.thread.start()
+
+    def stop(self):
+        self.running = False
+
+    def _run(self):
+        while self.running:
+            if(self.blinkState):
+                self.setLedBlue(time.time() % 0.4 > 0.2)
+            else:
+                self.setLedBlue(False)
+            time.sleep(0.05)
+
+    def setBlinking(self, state):
+        self.blinkState = state
 
     def getButtonCenter(self):
         return GPIO.input(BUTTON_CENTER) == False

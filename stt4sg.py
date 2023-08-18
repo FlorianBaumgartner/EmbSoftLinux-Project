@@ -21,7 +21,7 @@ class Stt4Sg:
 
         chrome_options.headless = True          # run browser in headless mode
         self.driver = webdriver.Chrome(options=chrome_options)
-        self.wait = WebDriverWait(self.driver, 60)
+        self.wait = WebDriverWait(self.driver, 300)
 
     def __del__(self):
         self.driver.quit()
