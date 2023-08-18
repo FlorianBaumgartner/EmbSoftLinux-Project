@@ -36,6 +36,9 @@ class Gpio:
 
     def start(self):
         self.running = True
+        self.setLedRed(False)
+        self.setLedGreen(False)
+        self.setLedBlue(False)
         self.thread = threading.Thread(target=self._run)
         self.thread.start()
 
