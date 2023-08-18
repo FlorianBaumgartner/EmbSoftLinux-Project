@@ -1,0 +1,20 @@
+# Adafruit OLED and GPIO
+adafruit-ssd1306
+board
+digitalio
+
+# Image Processing
+Pillow
+
+# Web scraping and requests
+requests
+selenium==4.6.1
+beautifulsoup4
+html5lib
+
+# Audio Processing
+pyaudio
+yt-dlp
+
+# Others
+urllib3
