@@ -17,14 +17,9 @@ def play_gif(gif_path, loop_count=0):
         frame_durations = [frame.info['duration'] for frame in ImageSequence.Iterator(img)]
     
     scaled_frames = [frame.resize((128, 64), Image.BICUBIC) for frame in frames]
-    
-    # Convert scaled_frames such that every pixel that isn't completely white (255) becomes black (0)
     thresholded_frames = [frame.point(lambda p: 255 if p > 70 else 0) for frame in scaled_frames]
-    # thresholded_frames = scaled_frames
     
-    # Convert frames to the OLED compatible format
     oled_frames = [frame.convert("1") for frame in thresholded_frames]
-
     oled_frames = oled_frames[1:]
 
     loop = 0
