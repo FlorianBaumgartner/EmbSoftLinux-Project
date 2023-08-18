@@ -30,8 +30,6 @@ Swiss Alexa is a voice-controlled music player that understands Swiss German. On
 5. The system will search and play the song via the Bluetooth speaker.
 6. To stop playback, press the joystick button again.
 
-Alright, here's an enhanced section of instructions for setting up `yt-dlp`, `pyaudio`, and `mpv`:
-
 ## Installing yt-dlp (A better replacement for youtube-dl)
 
 1. **Remove existing `youtube-dl` if present**:
