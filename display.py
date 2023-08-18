@@ -5,7 +5,6 @@ import adafruit_ssd1306
 import time
 import threading
 from enum import Enum
-from adafruit_display_text.label import Label
 from pathlib import Path
 
 
